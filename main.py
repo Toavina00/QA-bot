@@ -36,7 +36,7 @@ PROMPT_TEMPLATE="""\
 huggingface_embedding = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
 llm_model = ChatHuggingFace(
     llm=HuggingFacePipeline(
-        pipeline=pipeline("text-generation", model=CHAT_MODEL)
+        pipeline=pipeline("text-generation", model=CHAT_MODEL, token=os.environ["HUGGINGFACEHUB_API_TOKEN"])
     )
 )
 
