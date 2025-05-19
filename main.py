@@ -7,6 +7,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_unstructured import UnstructuredLoader
 from langchain_community.vectorstores import Chroma
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline, HuggingFaceEmbeddings
+from transformers import pipeline
+
 
 from huggingface_hub import login
 
@@ -38,10 +40,10 @@ PROMPT_TEMPLATE="""\
 
 huggingface_embedding = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
 llm_model = ChatHuggingFace(
-    llm=HuggingFacePipeline.from_model_id(
-        task="text-generation", 
-        model_id=CHAT_MODEL,
-        pipeline_kwargs=dict(
+    llm=HuggingFacePipeline(
+        pipeline=pipeline(
+            task="text-generation",
+            model="google/gemma-3-1b-it",
             max_new_tokens=512,
             repetition_penalty=1.03,
         ),
