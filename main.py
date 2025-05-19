@@ -17,7 +17,7 @@ load_dotenv()
 if not os.getenv("HF_TOKEN"):
     os.environ["HF_TOKEN"] = getpass.getpass("Enter your token: ")
 
-
+HF_TOKEN = os.environ["HF_TOKEN"]
 EMBEDDING_MODEL = "sentence-transformers/all-mpnet-base-v2"
 CHAT_MODEL = "google/gemma-3-1b-it"
 
@@ -34,7 +34,10 @@ PROMPT_TEMPLATE="""\
     ### Output
 """
 
-huggingface_embedding = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+huggingface_embedding = HuggingFaceEmbeddings(
+    model_name=EMBEDDING_MODEL
+)
+
 llm_model = ChatHuggingFace(
     llm=HuggingFacePipeline(
         pipeline=pipeline(
@@ -42,6 +45,8 @@ llm_model = ChatHuggingFace(
             model="google/gemma-3-1b-it",
             max_new_tokens=512,
             repetition_penalty=1.03,
+            do_sample=False,
+            token=HF_TOKEN
         ),
     )
 )
