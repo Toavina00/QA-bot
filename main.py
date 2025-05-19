@@ -8,6 +8,8 @@ from langchain_unstructured import UnstructuredLoader
 from langchain_community.vectorstores import Chroma
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline, HuggingFaceEmbeddings
 
+from huggingface_hub import login
+
 import gradio as gr
 
 
@@ -15,6 +17,8 @@ load_dotenv()
 
 if not os.getenv("HUGGINGFACEHUB_API_TOKEN"):
     os.environ["HUGGINGFACEHUB_API_TOKEN"] = getpass.getpass("Enter your token: ")
+
+login(os.environ["HUGGINGFACEHUB_API_TOKEN"])
 
 EMBEDDING_MODEL = "sentence-transformers/all-mpnet-base-v2"
 CHAT_MODEL = "google/gemma-3-1b-it"
