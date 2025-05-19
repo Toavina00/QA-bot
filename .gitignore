@@ -1,0 +1,8 @@
+.venv/
+
+.env
+
+.python-version
+uv.lock
+
+notebooks/

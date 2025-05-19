@@ -1,0 +1,30 @@
+[project]
+name = "qa-bot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "arxiv>=2.2.0",
+    "beautifulsoup4>=4.13.4",
+    "chromadb>=1.0.9",
+    "docx2txt>=0.9",
+    "gradio>=5.29.1",
+    "jq>=1.8.0",
+    "langchain>=0.3.25",
+    "langchain-community>=0.3.24",
+    "langchain-core>=0.3.60",
+    "langchain-huggingface>=0.2.0",
+    "langchain-ibm>=0.3.11",
+    "langchain-text-splitters>=0.3.8",
+    "langchain-unstructured>=0.1.6",
+    "lxml>=5.4.0",
+    "markdown>=3.8",
+    "nltk>=3.9.1",
+    "pandas>=2.2.3",
+    "pymupdf>=1.25.5",
+    "pypdf>=5.5.0",
+    "requests>=2.32.3",
+    "sentence-transformers>=4.1.0",
+    "unstructured>=0.17.2",
+]
