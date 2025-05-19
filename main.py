@@ -36,7 +36,7 @@ huggingface_embedding = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
 llm_model = ChatHuggingFace(
     llm=HuggingFacePipeline.from_model_id(
         task="text-generation", 
-        model=CHAT_MODEL,
+        model_id=CHAT_MODEL,
         pipeline_kwargs=dict(
             max_new_tokens=512,
             repetition_penalty=1.03,
