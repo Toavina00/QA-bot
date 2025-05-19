@@ -7,7 +7,6 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_unstructured import UnstructuredLoader
 from langchain_community.vectorstores import Chroma
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline, HuggingFaceEmbeddings
-from transformers import pipeline
 
 import gradio as gr
 
@@ -35,8 +34,13 @@ PROMPT_TEMPLATE="""\
 
 huggingface_embedding = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
 llm_model = ChatHuggingFace(
-    llm=HuggingFacePipeline(
-        pipeline=pipeline("text-generation", model=CHAT_MODEL, token=os.environ["HUGGINGFACEHUB_API_TOKEN"])
+    llm=HuggingFacePipeline.from_model_id(
+        task="text-generation", 
+        model=CHAT_MODEL,
+        pipeline_kwargs=dict(
+            max_new_tokens=512,
+            repetition_penalty=1.03,
+        ),
     )
 )
 
