@@ -18,7 +18,7 @@ if not os.getenv("HUGGINGFACEHUB_API_TOKEN"):
     os.environ["HUGGINGFACEHUB_API_TOKEN"] = getpass.getpass("Enter your token: ")
 
 EMBEDDING_MODEL = "sentence-transformers/all-mpnet-base-v2"
-CHAT_MODEL = "Qwen/Qwen3-4B"
+CHAT_MODEL = "meta-llama/Llama-3.2-3B-Instruct"
 
 PROMPT_TEMPLATE="""\
     ### Instruction
