@@ -9,7 +9,6 @@ from langchain_community.vectorstores import Chroma
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline, HuggingFaceEmbeddings
 from transformers import pipeline
 
-
 from huggingface_hub import login
 
 import gradio as gr
