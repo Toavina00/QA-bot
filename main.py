@@ -51,15 +51,13 @@ llm_model = ChatHuggingFace(
 
 def inference(prompt, files):
 
-    chunks = []
-    for f in files:
-        chunks = UnstructuredLoader(f).load_and_split(
-            RecursiveCharacterTextSplitter(
-                chunk_size=100,
-                chunk_overlap=20,
-                length_function=len,
-            )
+    chunks = UnstructuredLoader(files).load_and_split(
+        RecursiveCharacterTextSplitter(
+            chunk_size=100,
+            chunk_overlap=20,
+            length_function=len,
         )
+    )
     
 
     vectordb  = Chroma.from_documents(chunks, huggingface_embedding)
